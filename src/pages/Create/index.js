@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate} from "react-router-dom";
 import style from "./style.module.css";
 import { Cards } from "../../components/Cards";
+import { Toaster, toast } from "react-hot-toast";
 
 
 
@@ -35,6 +36,9 @@ function handleChange(e) {
 }
 
   async function handleList(e) {
+    toast('Task add', {
+      icon: '👏',
+    });
     e.preventDefault();
     try{
     await axios.post("https://ironrest.herokuapp.com/flavia-hotts", 
@@ -47,7 +51,9 @@ function handleChange(e) {
 }
 
   return (
-    <><div className="todo-app">
+    <>
+    <Toaster/>
+    <div className="todo-app">
       <h1>Todo List</h1>
     <form onSubmit={handleList}>
         <input
