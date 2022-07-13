@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 
 
 export function Cards(props) {
@@ -8,7 +8,7 @@ return (
 <div className="card-body">
     <h5 className="card-title">{`Task: ${props.task}`}</h5>
 
-    {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
+<Link to ={`/edit/${props.id}`} class="btn btn-primary">Edit</Link>
 </div>
 </div>
 )

@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Create } from "./pages/Create";
 import { Read } from "./pages/Read";
-import { Update } from "./pages/Update";
+import { Edit } from "./pages/Edit";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Create />} />
         <Route path="/read" element={<Read />} />
-        <Route path="/update/:id" element={<Update />} />
+        <Route path="/edit/:_id" element={<Edit />} />
       </Routes>
     </div>
   );
