@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate} from "react-router-dom";
+
 import style from "./style.module.css";
 import { Cards } from "../../components/Cards";
 import { Toaster, toast } from "react-hot-toast";
+
 
 
 
@@ -14,8 +15,7 @@ export function Create() {
 });
   console.log(todo)
   
-  const navigate = useNavigate();
-
+ 
   useEffect(() => {
     async function fetchTodo(){
       const response = await axios.get("https://ironrest.herokuapp.com/flavia-hotts")
@@ -36,15 +36,16 @@ function handleChange(e) {
 }
 
   async function handleList(e) {
-    toast('Task add', {
-      icon: '👏',
+    toast('Task added', {
+      icon: '✔️',
     });
     e.preventDefault();
     try{
     await axios.post("https://ironrest.herokuapp.com/flavia-hotts", 
       todo,
           );
-    navigate("/");
+          window.location.reload()
+    
   } catch(err) {
     console.log(err);
   }
@@ -52,15 +53,18 @@ function handleChange(e) {
 
   return (
     <>
-    <Toaster/>
-    <div className="todo-app">
+    <Toaster
+  position="top-center"
+  reverseOrder={true}
+/>
+    <div className="todo-app container my-3">
       <h1>Todo List</h1>
     <form onSubmit={handleList}>
         <input
           type="string"
           name="task"
           onChange={handleChange}
-          placeholder="add a task"
+          placeholder="read my new book"
           value={todo.task}
           // onChange={(e) => {
           // setTodo(e.target.value);
@@ -69,25 +73,21 @@ function handleChange(e) {
         <button
           onClick={handleList}
         >
-          Add
+          Add the task
         </button>
       </form>
             </div>
 
-            <div>            
+            <div className="container my-3">            
             {form.map((currentTodo) => {
               return (
                 <div key={currentTodo._id}>
                 <Cards task={currentTodo.task} id={currentTodo._id}/>
+                
                 </div>
               )
             })} 
             </div>
-
-
-
-            
             </>
-      
   )}
 

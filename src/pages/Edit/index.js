@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 
 
@@ -34,6 +35,7 @@ export function Edit (){
   }
   
     async function handleList(e) {
+      toast.success('Done!')
       e.preventDefault();
       try{
         const clone = {...todo}
@@ -48,7 +50,11 @@ export function Edit (){
   }
   
     return (
-      <><div className="todo-app">
+      <>
+      <Toaster
+  position="top-center"
+  reverseOrder={true}
+/><div className="todo-app">
         <h1>Todo List</h1>
       <form onSubmit={handleList}>
           <input
@@ -61,7 +67,8 @@ export function Edit (){
             // setTodo(e.target.value);
             // } } 
             />
-          <button
+          <button 
+          i class="bi bi-pencil-square"
           type="submit"
             onClick={handleList}
           >

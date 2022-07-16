@@ -9,7 +9,6 @@ body {
 .todo-app {
     display: flex;
     flex-direction: column;
-    justify-content: start;
     width: 45%;
     min-height: 600px;
     background: white;
@@ -17,4 +16,5 @@ body {
     margin: 128px auto;
     border-radius: 10px;
     padding-bottom: 32px;
+   
 }
