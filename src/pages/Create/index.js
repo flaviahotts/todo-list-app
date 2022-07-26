@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import style from "./style.module.css";
 import { Cards } from "../../components/Cards";
 import { Toaster, toast } from "react-hot-toast";
-
 
 
 
@@ -15,7 +13,7 @@ export function Create() {
 });
   console.log(todo)
   
- 
+
   useEffect(() => {
     async function fetchTodo(){
       const response = await axios.get("https://ironrest.herokuapp.com/flavia-hotts")
@@ -53,30 +51,26 @@ function handleChange(e) {
 
   return (
     <>
+    
     <Toaster
-  position="top-center"
-  reverseOrder={true}
+position="bottom-center"
+reverseOrder={false}
 />
-    <div className="todo-app container my-3">
-      <h1>Todo List</h1>
-    <form onSubmit={handleList}>
-        <input
+
+    <div className="todo-app container my-3 mt-5" >
+
+      <h1 style={{textAlign: "center" }}>Todo List</h1>
+    <form className="form d-flex justify-content-between" onSubmit={handleList}>
+        <input className="form-control form-control-lg"
           type="string"
           name="task"
           onChange={handleChange}
-          placeholder="read my new book"
+          placeholder="type a task"
           value={todo.task}
-          // onChange={(e) => {
-          // setTodo(e.target.value);
-          // } } 
-          />
-        <button
-          onClick={handleList}
-        >
-          Add the task
-        </button>
+        /> 
+        <button className="btn btn-light" onClick={handleList}><i className="bi bi-plus-square"></i></button>       
       </form>
-            </div>
+    </div>
 
             <div className="container my-3">            
             {form.map((currentTodo) => {

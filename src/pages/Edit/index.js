@@ -35,7 +35,9 @@ export function Edit (){
   }
   
     async function handleList(e) {
-      toast.success('Done!')
+      toast('Task edited', {
+        icon: '✔️',
+      });
       e.preventDefault();
       try{
         const clone = {...todo}
@@ -52,44 +54,24 @@ export function Edit (){
     return (
       <>
       <Toaster
-  position="top-center"
-  reverseOrder={true}
-/><div className="todo-app">
-        <h1>Todo List</h1>
-      <form onSubmit={handleList}>
-          <input
+  position="top-right"
+  reverseOrder={false}
+/><div className="todo-app container my-3 mt-5">
+        <h1 style={{textAlign: "center"}}>Todo List</h1>
+      <form className="form d-flex justify-content-between" onSubmit={handleList}>
+          <input className="form-control form-control-lg"
             type="string"
             name="task"
             onChange={handleChange}
-            placeholder="edit task"
+            placeholder="edit a task"
             value={todo.task}
-            // onChange={(e) => {
-            // setTodo(e.target.value);
-            // } } 
             />
-          <button 
-          i class="bi bi-pencil-square"
+          <button className="btn btn-light"  
           type="submit"
-            onClick={handleList}
-          >
-            Edit
-          </button>
+          onClick={handleList}
+          ><i class="bi bi-check2-square"></i>  
+          </button>        
         </form>
               </div>
-  
-              {/* <div>            
-              {form.map((currentTodo) => {
-                return (
-                  <div key={currentTodo._id}>
-                  <Cards task={currentTodo.task} id={currentTodo._id}/>
-                  </div>
-                )
-              })} 
-              </div> */}
-  
-  
-  
-              
-              </>
-        
+        </>       
     )}
